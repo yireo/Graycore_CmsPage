@@ -1,0 +1,34 @@
+<?php
+
+declare(strict_types=1);
+
+use Graycore\CmsPage\ViewModel\BlockRenderer;
+use Graycore\CmsPage\ViewModel\CurrentPageAi;
+use Magento\Framework\View\Element\Template;
+
+/** @var Template $block */
+/** @var CurrentPageAi $currentPageAi */
+/** @var BlockRenderer $blockRenderer */
+
+$debug = (bool)$block->getDebug();
+
+$currentPageAi = $block->getCurrentPageAi();
+if (!$currentPageAi) {
+    return;
+}
+
+$blockRenderer = $block->getBlockRenderer();
+$aiSchema = $currentPageAi->getAiSchema();
+?>
+<div class="page_ai">
+    <?= $blockRenderer->renderChild($aiSchema); ?>
+</div>
+
+<style><?= $blockRenderer->getCss() ?></style>
+
+<?php if ($debug) : ?>
+    <pre>
+        <?= print_r($blockRenderer->getStyles()); ?>
+        <?= print_r($currentPageAi->getAiSchema()); ?>
+    </pre>
+<?php endif; ?>

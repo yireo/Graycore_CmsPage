@@ -1,0 +1,22 @@
+{
+  "name": "graycore/magento2-cms-page",
+  "version": "1.0.0",
+  "description": "A Magento 2 frontend module to add Graycore_CmsAiBuilder-based content to pages",
+  "type": "magento2-module",
+  "require": {
+    "php": "~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0",
+    "magento/framework": "^102.0 || ^103.0",
+    "graycore/magento2-cms-ai-builder": ""
+  },
+  "license": [
+    "OSL-3.0"
+  ],
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "Graycore\\CmsPage\\": ""
+    }
+  }
+}

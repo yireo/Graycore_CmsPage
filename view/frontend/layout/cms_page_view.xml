@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:View/Layout:etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <block name="cms.page_ai" template="Graycore_CmsPage::page_ai.phtml" after="cms_page">
+                <arguments>
+                    <argument name="current_page_ai" xsi:type="object">Graycore\CmsPage\ViewModel\CurrentPageAi</argument>
+                    <argument name="block_renderer" xsi:type="object">Graycore\CmsPage\ViewModel\BlockRenderer</argument>
+                    <argument name="debug" xsi:type="boolean">true</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+
+        <block
+            name="cms.page_ai.elementSchema"
+            template="Graycore_CmsPage::page_ai/element.phtml"/>
+
+        <block
+            name="cms.page_ai.textSchema"
+            template="Graycore_CmsPage::page_ai/text.phtml"/>
+    </body>
+</page>

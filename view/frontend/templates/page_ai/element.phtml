@@ -1,0 +1,27 @@
+<?php
+
+declare(strict_types=1);
+
+use Graycore\CmsPage\ViewModel\BlockRenderer;
+use Magento\Framework\View\Element\Template;
+
+/** @var Template $block */
+/** @var BlockRenderer $blockRenderer */
+
+$blockRenderer = $block->getBlockRenderer();
+$elementTag = $block->getElement();
+if (empty($elementTag)) {
+    return '';
+}
+
+$elementId = $block->getElementId();
+$elementIdAttribute = '';
+if (!empty($elementId)) {
+    $elementIdAttribute = ' id="' . $elementId . '"';
+}
+?>
+<<?= $elementTag ?> <?= $elementIdAttribute ?>>
+<?php foreach ((array)$block->getData('children') as $child) : ?>
+    <?= $blockRenderer->renderChild($child); ?>
+<?php endforeach; ?>
+</<?= $elementTag ?>>
