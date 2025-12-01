@@ -20,6 +20,10 @@ class BlockRenderer implements ArgumentInterface
 
     public function renderChild(array $childData): string
     {
+        if (false === array_key_exists('type', $childData)) {
+            return '';
+        }
+
         $blockName = 'cms.page_ai.' . $childData['type'];
         $block = $this->layout->getBlock($blockName);
         if (false === $block instanceof AbstractBlock) {
